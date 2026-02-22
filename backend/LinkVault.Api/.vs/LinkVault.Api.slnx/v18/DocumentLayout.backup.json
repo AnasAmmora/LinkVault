@@ -3,40 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|c:\\users\\anasa\\documents\\linkvault\\backend\\linkvault.api\\dockerfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|solutionrelative:dockerfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|c:\\users\\anasa\\documents\\linkvault\\backend\\linkvault.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|c:\\users\\anasa\\documents\\linkvault\\backend\\linkvault.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|c:\\users\\anasa\\documents\\linkvault\\backend\\linkvault.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|c:\\users\\anasa\\documents\\linkvault\\backend\\linkvault.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|c:\\users\\anasa\\documents\\linkvault\\backend\\linkvault.api\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|c:\\users\\anasa\\documents\\linkvault\\backend\\linkvault.api\\controllers\\collectionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|solutionrelative:controllers\\collectionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|c:\\users\\anasa\\documents\\linkvault\\backend\\linkvault.api\\controllers\\linkscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|solutionrelative:controllers\\linkscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|c:\\users\\anasa\\documents\\linkvault\\backend\\linkvault.api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|solutionrelative:controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|c:\\users\\anasa\\documents\\linkvault\\backend\\linkvault.api\\dockerfile||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{772BC124-393B-22AD-1DBA-FC8DD557DF7D}|LinkVault.Api.csproj|solutionrelative:dockerfile||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -51,112 +19,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Dockerfile.cs",
-              "DocumentMoniker": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Dockerfile.cs",
-              "RelativeDocumentMoniker": "Dockerfile.cs",
-              "ToolTip": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Dockerfile.cs",
-              "RelativeToolTip": "Dockerfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-22T17:16:07.281Z",
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Dockerfile",
+              "RelativeDocumentMoniker": "Dockerfile",
+              "ToolTip": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Dockerfile",
+              "RelativeToolTip": "Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-02-22T17:42:03.929Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAYwAkAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-02-22T02:36:42.408Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Models\\User.cs",
-              "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Models\\User.cs",
-              "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-21T19:41:54.27Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-19T02:28:16.924Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CategoriesController.cs",
-              "DocumentMoniker": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Controllers\\CategoriesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CategoriesController.cs",
-              "ToolTip": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Controllers\\CategoriesController.cs",
-              "RelativeToolTip": "Controllers\\CategoriesController.cs",
-              "ViewState": "AgIAAGkAAAAAAAAAAAAAwIQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-19T01:26:33.278Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAhwDsAAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-14T12:44:54.729Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-02-21T19:43:05.72Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "LinksController.cs",
-              "DocumentMoniker": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Controllers\\LinksController.cs",
-              "RelativeDocumentMoniker": "Controllers\\LinksController.cs",
-              "ToolTip": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Controllers\\LinksController.cs",
-              "RelativeToolTip": "Controllers\\LinksController.cs",
-              "ViewState": "AgIAAM8AAAAAAAAAAAAAwOoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-14T00:34:46.052Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CollectionsController.cs",
-              "DocumentMoniker": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Controllers\\CollectionsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CollectionsController.cs",
-              "ToolTip": "C:\\Users\\anasa\\Documents\\LinkVault\\backend\\LinkVault.Api\\Controllers\\CollectionsController.cs",
-              "RelativeToolTip": "Controllers\\CollectionsController.cs",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAIwIgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-14T00:22:14.559Z"
             }
           ]
         }
