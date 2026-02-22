@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LinkVault.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1a0f71c17c02b862432890136f8cef791d8ddb78")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ccb7de8f6987c5f399cc20e08f4b9a756ceeaec")]
 [assembly: System.Reflection.AssemblyProductAttribute("LinkVault.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LinkVault.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
