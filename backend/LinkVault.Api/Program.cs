@@ -49,6 +49,21 @@ builder.Services.AddCors(opt =>
 
 builder.Services.AddAuthorization();
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        policy =>
+        {
+            policy
+                .WithOrigins(
+                    "https://frontend-production-7f9b.up.railway.app"
+                )
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
+
 var app = builder.Build();
 
 //if (app.Environment.IsDevelopment())
@@ -62,6 +77,8 @@ app.UseSwaggerUI();
 app.UseCors("dev");
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowFrontend");
 
 app.UseAuthentication();
 app.UseAuthorization();
