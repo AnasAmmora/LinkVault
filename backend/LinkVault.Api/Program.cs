@@ -38,16 +38,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-builder.Services.AddCors(opt =>
-{
-    opt.AddPolicy("dev", p =>
-        p.WithOrigins("http://localhost:5173")
-         .AllowAnyHeader()
-         .AllowAnyMethod()
-         .AllowCredentials());
-});
+//builder.Services.AddCors(opt =>
+//{
+//    opt.AddPolicy("dev", p =>
+//        p.WithOrigins("http://localhost:5173")
+//         .AllowAnyHeader()
+//         .AllowAnyMethod()
+//         .AllowCredentials());
+//});
 
-builder.Services.AddAuthorization();
+//builder.Services.AddAuthorization();
 
 
 //builder.Services.AddCors(options =>
@@ -84,7 +84,7 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseCors("dev");
+
 
 app.UseHttpsRedirection();
 
