@@ -50,18 +50,28 @@ builder.Services.AddCors(opt =>
 builder.Services.AddAuthorization();
 
 
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("AllowFrontend",
+//        policy =>
+//        {
+//            policy
+//                .WithOrigins(
+//                    "https://frontend-production-7f9b.up.railway.app"
+//                )
+//                .AllowAnyHeader()
+//                .AllowAnyMethod();
+//        });
+//});
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend",
-        policy =>
-        {
-            policy
-                .WithOrigins(
-                    "https://frontend-production-7f9b.up.railway.app"
-                )
-                .AllowAnyHeader()
-                .AllowAnyMethod();
-        });
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
 });
 
 var app = builder.Build();
