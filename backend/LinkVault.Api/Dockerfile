@@ -13,6 +13,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /app
 COPY --from=build /app/out ./
 
-ENV ASPNETCORE_URLS=http://+:$PORT
+ENV ASPNETCORE_URLS=http://+:8080
 
 ENTRYPOINT ["dotnet", "LinkVault.Api.dll"]
