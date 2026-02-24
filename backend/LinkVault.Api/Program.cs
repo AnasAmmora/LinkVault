@@ -68,7 +68,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy
-            .AllowAnyOrigin()
+            .WithOrigins("https://frontend-2f06.onrender.com")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
@@ -86,7 +86,7 @@ app.UseSwaggerUI();
 
 
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseCors("AllowFrontend");
 
