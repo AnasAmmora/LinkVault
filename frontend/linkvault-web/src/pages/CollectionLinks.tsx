@@ -6,15 +6,33 @@ import AppShell from "@/components/layout/AppShell"
 import { linksApi } from "@/api/links"
 import { categoriesApi } from "@/api/categories"
 import { collectionsApi } from "@/api/collections"
-import type { CategoryResponse, CollectionResponse, LinkResponse, PagedResult } from "@/api/types"
+import type {
+  CategoryResponse,
+  CollectionResponse,
+  LinkResponse,
+  PagedResult,
+} from "@/api/types"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import {
   Dialog,
   DialogContent,
@@ -29,18 +47,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-import { Plus, MoreVertical, ExternalLink } from "lucide-react"
+import { Plus, MoreVertical } from "lucide-react"
 
 function formatDate(iso: string) {
-  const d = new Date(iso)
-  return d.toLocaleDateString()
+  return new Date(iso).toLocaleDateString()
 }
 
 type LinkForm = {
   url: string
   title: string
   description: string
-  categoryId: string // "" | "id"
+  categoryId: string
 }
 
 export default function CollectionLinks() {
@@ -48,7 +65,7 @@ export default function CollectionLinks() {
   const collectionId = Number(id)
 
   const [cats, setCats] = useState<CategoryResponse[]>([])
-  const [collections, setCollections] = useState<CollectionResponse[]>([])
+  const [, setCollections] = useState<CollectionResponse[]>([])
   const [data, setData] = useState<PagedResult<LinkResponse> | null>(null)
   const [loading, setLoading] = useState(true)
 
@@ -56,9 +73,7 @@ export default function CollectionLinks() {
   const [categoryFilter, setCategoryFilter] = useState<string>("all")
 
   const [openCreate, setOpenCreate] = useState(false)
-  const [openMove, setOpenMove] = useState(false)
-  const [movingLinkId, setMovingLinkId] = useState<number | null>(null)
-  const [targetCollectionId, setTargetCollectionId] = useState<string>("")
+
 
   const [form, setForm] = useState<LinkForm>({
     url: "",
@@ -78,7 +93,8 @@ export default function CollectionLinks() {
     try {
       const res = await linksApi.listByCollection(collectionId, {
         q: q.trim() || undefined,
-        categoryId: categoryFilter === "all" ? undefined : Number(categoryFilter),
+        categoryId:
+          categoryFilter === "all" ? undefined : Number(categoryFilter),
         sort: "newest",
         page: 1,
         pageSize: 50,
@@ -91,6 +107,7 @@ export default function CollectionLinks() {
     }
   }
 
+  // تحميل categories + collections مرة واحدة عند تغيير الكولكشن
   useEffect(() => {
     ;(async () => {
       try {
@@ -101,16 +118,19 @@ export default function CollectionLinks() {
         setCats(c1)
         setCollections(c2.items)
       } catch {
-        // تجاهل
+        //
       }
-      await load()
     })()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [collectionId])
+
+  // 🔥 Auto apply عند تغيير البحث أو الفلتر
+  useEffect(() => {
+    load()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [collectionId, q, categoryFilter])
 
   return (
     <AppShell title={`Links • Collection #${collectionId}`}>
-      {/* Top controls */}
       <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between mb-5">
         <div>
           <h2 className="text-lg font-semibold">Links</h2>
@@ -126,6 +146,7 @@ export default function CollectionLinks() {
             placeholder="Search by url/title/description..."
             className="w-full sm:w-72"
           />
+
           <Select value={categoryFilter} onValueChange={setCategoryFilter}>
             <SelectTrigger className="w-full sm:w-48">
               <SelectValue placeholder="All categories" />
@@ -133,14 +154,12 @@ export default function CollectionLinks() {
             <SelectContent>
               <SelectItem value="all">All categories</SelectItem>
               {cats.map((c) => (
-                <SelectItem key={c.id} value={String(c.id)}>{c.name}</SelectItem>
+                <SelectItem key={c.id} value={String(c.id)}>
+                  {c.name}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
-
-          <Button variant="outline" onClick={load}>
-            Apply
-          </Button>
 
           <Dialog open={openCreate} onOpenChange={setOpenCreate}>
             <DialogTrigger asChild>
@@ -157,22 +176,33 @@ export default function CollectionLinks() {
               <div className="space-y-3">
                 <Input
                   value={form.url}
-                  onChange={(e) => setForm((p) => ({ ...p, url: e.target.value }))}
+                  onChange={(e) =>
+                    setForm((p) => ({ ...p, url: e.target.value }))
+                  }
                   placeholder="https://..."
                 />
+
                 <Input
                   value={form.title}
-                  onChange={(e) => setForm((p) => ({ ...p, title: e.target.value }))}
+                  onChange={(e) =>
+                    setForm((p) => ({ ...p, title: e.target.value }))
+                  }
                   placeholder="Title (optional)"
                 />
+
                 <Textarea
                   value={form.description}
-                  onChange={(e) => setForm((p) => ({ ...p, description: e.target.value }))}
+                  onChange={(e) =>
+                    setForm((p) => ({ ...p, description: e.target.value }))
+                  }
                   placeholder="Description (optional)"
                 />
+
                 <Select
                   value={form.categoryId}
-                  onValueChange={(v) => setForm((p) => ({ ...p, categoryId: v }))}
+                  onValueChange={(v) =>
+                    setForm((p) => ({ ...p, categoryId: v }))
+                  }
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Category" />
@@ -180,7 +210,9 @@ export default function CollectionLinks() {
                   <SelectContent>
                     <SelectItem value="none">No category</SelectItem>
                     {cats.map((c) => (
-                      <SelectItem key={c.id} value={String(c.id)}>{c.name}</SelectItem>
+                      <SelectItem key={c.id} value={String(c.id)}>
+                        {c.name}
+                      </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
@@ -188,18 +220,27 @@ export default function CollectionLinks() {
                 <Button
                   className="w-full"
                   onClick={async () => {
-                    const url = form.url.trim()
-                    if (!url) return toast.error("Url is required.")
+                    if (!form.url.trim())
+                      return toast.error("Url is required.")
+
                     try {
                       await linksApi.create(collectionId, {
-                        url,
+                        url: form.url.trim(),
                         title: form.title.trim() || undefined,
                         description: form.description.trim() || undefined,
                         categoryId:
-                          form.categoryId === "none" ? undefined : Number(form.categoryId),
+                          form.categoryId === "none"
+                            ? undefined
+                            : Number(form.categoryId),
                       })
+
                       toast.success("Link added.")
-                      setForm({ url: "", title: "", description: "", categoryId: "none" })
+                      setForm({
+                        url: "",
+                        title: "",
+                        description: "",
+                        categoryId: "none",
+                      })
                       setOpenCreate(false)
                       await load()
                     } catch (ex: any) {
@@ -215,53 +256,6 @@ export default function CollectionLinks() {
         </div>
       </div>
 
-      {/* Move dialog */}
-      <Dialog open={openMove} onOpenChange={setOpenMove}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Move link</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-3">
-            <Select value={targetCollectionId} onValueChange={setTargetCollectionId}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select target collection" />
-              </SelectTrigger>
-              <SelectContent>
-                {collections
-                  .filter((c) => c.id !== collectionId)
-                  .map((c) => (
-                    <SelectItem key={c.id} value={String(c.id)}>
-                      {c.name}
-                    </SelectItem>
-                  ))}
-              </SelectContent>
-            </Select>
-
-            <Button
-              className="w-full"
-              onClick={async () => {
-                if (!movingLinkId) return
-                const target = Number(targetCollectionId)
-                if (!target) return toast.error("Pick a target collection.")
-                try {
-                  await linksApi.move(movingLinkId, target)
-                  toast.success("Moved.")
-                  setOpenMove(false)
-                  setMovingLinkId(null)
-                  setTargetCollectionId("")
-                  await load()
-                } catch (ex: any) {
-                  toast.error(ex?.response?.data ?? "Move failed")
-                }
-              }}
-            >
-              Move
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      {/* Table */}
       <Card>
         <CardContent className="p-0">
           <Table>
@@ -275,36 +269,36 @@ export default function CollectionLinks() {
             </TableHeader>
             <TableBody>
               {loading ? (
-                <TableRow><TableCell colSpan={4}>Loading...</TableCell></TableRow>
+                <TableRow>
+                  <TableCell colSpan={4}>Loading...</TableCell>
+                </TableRow>
               ) : (data?.items?.length ?? 0) === 0 ? (
-                <TableRow><TableCell colSpan={4}>No links found.</TableCell></TableRow>
+                <TableRow>
+                  <TableCell colSpan={4}>No links found.</TableCell>
+                </TableRow>
               ) : (
                 data!.items.map((l) => (
                   <TableRow key={l.id}>
-                    <TableCell className="min-w-0">
-                      <div className="flex items-center gap-2 min-w-0">
-                        <ExternalLink className="size-4 text-muted-foreground shrink-0" />
-                        <div className="min-w-0">
-                          <a
-                            href={l.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="font-medium hover:underline underline-offset-4 block truncate"
-                          >
-                            {l.title ?? l.url}
-                          </a>
-                          {l.description && (
-                            <p className="text-xs text-muted-foreground truncate">{l.description}</p>
-                          )}
-                        </div>
-                      </div>
+                    <TableCell>
+                      <a
+                        href={l.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-medium hover:underline"
+                      >
+                        {l.title ?? l.url}
+                      </a>
                     </TableCell>
 
                     <TableCell>
                       {l.categoryId ? (
-                        <Badge variant="secondary">{catNameById.get(l.categoryId) ?? `#${l.categoryId}`}</Badge>
+                        <Badge variant="secondary">
+                          {catNameById.get(l.categoryId)}
+                        </Badge>
                       ) : (
-                        <span className="text-xs text-muted-foreground">—</span>
+                        <span className="text-xs text-muted-foreground">
+                          —
+                        </span>
                       )}
                     </TableCell>
 
@@ -320,51 +314,18 @@ export default function CollectionLinks() {
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuItem onClick={() => window.open(l.url, "_blank")}>
+                          <DropdownMenuItem
+                            onClick={() => window.open(l.url, "_blank")}
+                          >
                             Open
                           </DropdownMenuItem>
-
-                          <DropdownMenuItem
-                            onClick={async () => {
-                              const newUrl = prompt("Url:", l.url)?.trim()
-                              if (!newUrl) return
-                              try {
-                                await linksApi.update(l.id, {
-                                  url: newUrl,
-                                  title: l.title,
-                                  description: l.description,
-                                  categoryId: l.categoryId ?? null,
-                                })
-                                toast.success("Updated.")
-                                await load()
-                              } catch (ex: any) {
-                                toast.error(ex?.response?.data ?? "Update failed")
-                              }
-                            }}
-                          >
-                            Quick edit (url)
-                          </DropdownMenuItem>
-
-                          <DropdownMenuItem
-                            onClick={() => {
-                              setMovingLinkId(l.id)
-                              setOpenMove(true)
-                            }}
-                          >
-                            Move…
-                          </DropdownMenuItem>
-
                           <DropdownMenuItem
                             className="text-destructive"
                             onClick={async () => {
                               if (!confirm("Delete this link?")) return
-                              try {
-                                await linksApi.remove(l.id)
-                                toast.success("Deleted.")
-                                await load()
-                              } catch (ex: any) {
-                                toast.error(ex?.response?.data ?? "Delete failed")
-                              }
+                              await linksApi.remove(l.id)
+                              toast.success("Deleted.")
+                              await load()
                             }}
                           >
                             Delete

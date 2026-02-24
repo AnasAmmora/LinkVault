@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { toast } from "sonner"
 
 import AppShell from "@/components/layout/AppShell"
@@ -10,7 +10,13 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,6 +32,8 @@ function formatDate(iso: string) {
 }
 
 export default function Dashboard() {
+  const navigate = useNavigate()
+
   const [data, setData] = useState<PagedResult<CollectionResponse> | null>(null)
   const [loading, setLoading] = useState(true)
 
@@ -35,7 +43,11 @@ export default function Dashboard() {
   async function load() {
     setLoading(true)
     try {
-      const res = await collectionsApi.list({ page: 1, pageSize: 50, sort: "newest" })
+      const res = await collectionsApi.list({
+        page: 1,
+        pageSize: 50,
+        sort: "newest",
+      })
       setData(res)
     } catch (ex: any) {
       toast.error(ex?.response?.data ?? "Failed to load collections")
@@ -53,7 +65,9 @@ export default function Dashboard() {
       <div className="flex items-center justify-between gap-3 mb-5">
         <div>
           <h2 className="text-lg font-semibold">Your collections</h2>
-          <p className="text-sm text-muted-foreground">Create folders and keep links organized.</p>
+          <p className="text-sm text-muted-foreground">
+            Create folders and keep links organized.
+          </p>
         </div>
 
         <Dialog open={openCreate} onOpenChange={setOpenCreate}>
@@ -78,6 +92,7 @@ export default function Dashboard() {
                 onClick={async () => {
                   const name = newName.trim()
                   if (!name) return toast.error("Name is required.")
+
                   try {
                     await collectionsApi.create(name)
                     toast.success("Collection created.")
@@ -124,16 +139,17 @@ export default function Dashboard() {
       {!loading && data?.items?.length ? (
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {data.items.map((c) => (
-            <Card key={c.id} className="hover:shadow-sm transition">
+            <Card
+              key={c.id}
+              className="hover:shadow-md transition cursor-pointer active:scale-[0.99]"
+              onClick={() => navigate(`/collections/${c.id}`)}
+            >
               <CardContent className="p-4">
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0">
-                    <Link
-                      to={`/collections/${c.id}`}
-                      className="font-semibold hover:underline underline-offset-4 block truncate"
-                    >
+                    <div className="font-semibold block truncate">
                       {c.name}
-                    </Link>
+                    </div>
                     <p className="text-xs text-muted-foreground mt-1">
                       Created {formatDate(c.createdAt)}
                     </p>
@@ -141,15 +157,22 @@ export default function Dashboard() {
 
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="icon">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={(e) => e.stopPropagation()}
+                      >
                         <MoreVertical className="size-4" />
                       </Button>
                     </DropdownMenuTrigger>
+
                     <DropdownMenuContent align="end">
                       <DropdownMenuItem
-                        onClick={async () => {
+                        onClick={async (e) => {
+                          e.stopPropagation()
                           const newN = prompt("New name:", c.name)?.trim()
                           if (!newN) return
+
                           try {
                             await collectionsApi.update(c.id, newN)
                             toast.success("Renamed.")
@@ -161,10 +184,13 @@ export default function Dashboard() {
                       >
                         Rename
                       </DropdownMenuItem>
+
                       <DropdownMenuItem
                         className="text-destructive"
-                        onClick={async () => {
+                        onClick={async (e) => {
+                          e.stopPropagation()
                           if (!confirm("Delete this collection?")) return
+
                           try {
                             await collectionsApi.remove(c.id)
                             toast.success("Deleted.")
