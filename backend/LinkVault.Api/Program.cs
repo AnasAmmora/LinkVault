@@ -68,7 +68,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy
-            .WithOrigins("https://frontend-2f06.onrender.com")
+            .WithOrigins("https://frontend-production-7f9b.up.railway.app")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
@@ -86,7 +86,7 @@ app.UseSwaggerUI();
 
 
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.UseCors("AllowFrontend");
 
