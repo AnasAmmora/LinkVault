@@ -11,8 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // Database (EF Core)
-//builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -38,39 +36,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-//builder.Services.AddCors(opt =>
-//{
-//    opt.AddPolicy("dev", p =>
-//        p.WithOrigins("http://localhost:5173")
-//         .AllowAnyHeader()
-//         .AllowAnyMethod()
-//         .AllowCredentials());
-//});
-
-//builder.Services.AddAuthorization();
-
-
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("AllowFrontend",
-//        policy =>
-//        {
-//            policy
-//                .WithOrigins(
-//                    "https://frontend-production-7f9b.up.railway.app"
-//                )
-//                .AllowAnyHeader()
-//                .AllowAnyMethod();
-//        });
-//});
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", policy =>
+    options.AddPolicy("AllowAllEnvironments", policy =>
     {
         policy
-            .WithOrigins("https://frontend-production-7f9b.up.railway.app")
+            .WithOrigins(
+                "http://localhost:5173", // local frontend
+                "https://frontend-production-7f9b.up.railway.app" // railway frontend
+            )
             .AllowAnyHeader()
-            .AllowAnyMethod();
+            .AllowAnyMethod()
+            .AllowCredentials();
     });
 });
 
@@ -88,7 +65,7 @@ app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowFrontend");
+app.UseCors("AllowAllEnvironments");
 
 app.UseAuthentication();
 app.UseAuthorization();

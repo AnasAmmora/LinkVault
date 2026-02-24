@@ -14,11 +14,12 @@ The system supports:
 # 🏗 Tech Stack
 
 - ASP.NET Core Web API (.NET 10)
-- Entity Framework Core
-- SQL Server
+- React
+- Postgres
 - JWT Authentication
 - Swagger (Swashbuckle)
 - Postman
+
 
 ---
 
@@ -289,12 +290,11 @@ Links using this category will be automatically unlinked before deletion.
 
 # 👨‍💻 Author
 
-Anas Khaled  
+Anas Amoorah  
 ASP.NET Core Backend Developer  
-Game Dev Enthusiast 🎮
 
-_________________
-      Now listening on: https://localhost:7168
+
+
 
 
 
